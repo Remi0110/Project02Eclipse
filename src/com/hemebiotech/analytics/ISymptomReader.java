@@ -25,20 +25,21 @@ public interface ISymptomReader {
 	/**
 	 * count occurences of symptoms in a file
 	 *
-	 * @param file
-	 *            name
-	 * @return list of iteration of symptoms with their occurences : : :
+	 * @param file name
+	 * 
+	 * @return map of iteration of symptoms with their occurences
+	 * 
 	 * @author Rémi ESPIN
 	 */
 	public Map<String, Integer> getSymptomsWithOccurences(String fileName);
 
 	/**
-	 * write a new file from a list of symptoms
+	 * write a new file from a map of symptoms
 	 *
-	 * @param file
-	 *            name
-	 * @return file with number of iteration of symptoms from the file in argument :
-	 *         : :
+	 * @param file name
+	 * 
+	 * @return file with number of iteration of each symptoms from the file in param
+	 *        
 	 * @author Rémi ESPIN
 	 */
 	FileWriter writeFileFromListWithSymptomsAndOccurences(String fileName) throws IOException;

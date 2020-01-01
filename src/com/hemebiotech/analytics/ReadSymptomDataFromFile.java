@@ -12,20 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * Simple brute force implementation
- *
- */
+
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
 	private String filepath;
 
-	/**
-	 *
-	 * @param filepath
-	 *            a full or partial path to file with symptom strings in it, one per
-	 *            line
-	 */
+	
 	public ReadSymptomDataFromFile(String filepath) {
 		this.filepath = filepath;
 	}
@@ -77,14 +69,13 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	public Map<String, Integer> getSymptomsWithOccurences(String fileName) {
 		List<String> symptoms = this.getSymptoms(fileName);
 		Collections.sort(symptoms);
-		Map<String, Integer> map = new HashMap<>();
+		Map<String, Integer> map = new TreeMap<>();
 
 		for (String symptom : symptoms) {
 			map.put(symptom, map.containsKey(symptom) ? map.get(symptom) + 1 : 1);
 		}
 
-		Map<String, Integer> sortedMap = new TreeMap<>(map);
-		return sortedMap;
+		return map;
 
 	}
 
