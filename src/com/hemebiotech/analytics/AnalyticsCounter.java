@@ -11,7 +11,6 @@ public class AnalyticsCounter {
 		final String file = new String("symptoms.txt");
 
 		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
-		readSymptomDataFromFile.getSymptomsWithOccurences(file);
 		readSymptomDataFromFile.writeFileFromListWithSymptomsAndOccurences(file);
 	}
 
