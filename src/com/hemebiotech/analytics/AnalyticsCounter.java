@@ -1,8 +1,7 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.List;
+import java.util.Map;
 
 public class AnalyticsCounter {
 
@@ -11,7 +10,9 @@ public class AnalyticsCounter {
 		final String file = new String("symptoms.txt");
 
 		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
-		readSymptomDataFromFile.writeFileFromListWithSymptomsAndOccurences(file);
+		List<String> symptoms = readSymptomDataFromFile.getSymptoms(file);
+		Map<String, Integer> mapSymptomsOccurences = readSymptomDataFromFile.getSymptomsWithOccurences(symptoms);
+		readSymptomDataFromFile.writeSymptomsAndOccurences(mapSymptomsOccurences);
 	}
 
 }

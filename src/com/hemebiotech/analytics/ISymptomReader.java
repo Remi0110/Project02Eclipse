@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +28,9 @@ public interface ISymptomReader {
 	 * 
 	 * @return map of iteration of symptoms with their occurences
 	 * 
-	 * @author Rémi ESPIN
+	 * @author Rï¿½mi ESPIN
 	 */
-	public Map<String, Integer> getSymptomsWithOccurences(String fileName);
+	public Map<String, Integer> getSymptomsWithOccurences(List<String> symptoms);
 
 	/**
 	 * write a new file from a map of symptoms
@@ -40,7 +39,7 @@ public interface ISymptomReader {
 	 * 
 	 * @return file with number of iteration of each symptoms from the file in param
 	 *        
-	 * @author Rémi ESPIN
+	 * @author Rï¿½mi ESPIN
 	 */
-	FileWriter writeFileFromListWithSymptomsAndOccurences(String fileName) throws IOException;
+	void writeSymptomsAndOccurences(Map<String, Integer> mapSymptomsOccurences) throws IOException;
 }

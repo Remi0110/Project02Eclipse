@@ -5,9 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,16 +13,7 @@ import java.util.TreeMap;
 
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-	private String filepath;
 
-	
-	public ReadSymptomDataFromFile(String filepath) {
-		this.filepath = filepath;
-	}
-
-	public ReadSymptomDataFromFile() {
-
-	}
 
 	@Override
 	public List<String> getSymptoms(String fileName) {
@@ -49,12 +38,14 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 
 	@Override
-	public FileWriter writeFileFromListWithSymptomsAndOccurences(String fileName) throws IOException {
-		Map<String, Integer> symptomsOccurences = this.getSymptomsWithOccurences(fileName);
-		FileWriter writer = new FileWriter("result.out");
-		symptomsOccurences.forEach((k, v) -> {
+	public void writeSymptomsAndOccurences(Map<String, Integer> mapSymptomsOccurences) throws IOException {
+		
+		String currentUsersHomeDir = System.getProperty("user.home");
+		String path = currentUsersHomeDir + System.getProperty("file.separator") + "result.out";
+		FileWriter writer = new FileWriter(path);
+		mapSymptomsOccurences.forEach((k, v) -> {
 			try {
-				writer.write(k + ":" + v);
+				writer.write(k + "=" + v);
 				writer.write(System.getProperty("line.separator"));
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -62,12 +53,13 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		});
 
 		writer.close();
-		return writer;
+		System.out.println("le fichier de sortie se trouve: " + path);
+		
 	}
 
 	@Override
-	public Map<String, Integer> getSymptomsWithOccurences(String fileName) {
-		List<String> symptoms = this.getSymptoms(fileName);
+	public Map<String, Integer> getSymptomsWithOccurences(List<String> symptoms) {
+	
 		Collections.sort(symptoms);
 		Map<String, Integer> map = new TreeMap<>();
 
