@@ -28,7 +28,7 @@ public interface ISymptomReader {
 	 * 
 	 * @return map of iteration of symptoms with their occurences
 	 * 
-	 * @author R�mi ESPIN
+	 * @author Rémi ESPIN
 	 */
 	public Map<String, Integer> getSymptomsWithOccurences(List<String> symptoms);
 
@@ -37,9 +37,9 @@ public interface ISymptomReader {
 	 *
 	 * @param map with symptoms and their occurences
 	 * 
-	 * @return file with number of iteration of each symptoms from the file in param
+	 * @return file with number of iteration of each symptoms from the map in param
 	 *        
-	 * @author R�mi ESPIN
+	 * @author Rémi ESPIN
 	 */
 	void writeSymptomsAndOccurences(Map<String, Integer> mapSymptomsOccurences) throws IOException;
 }
