@@ -24,7 +24,7 @@ public interface ISymptomReader {
 	/**
 	 * count occurences of symptoms in a file
 	 *
-	 * @param file name
+	 * @param list of symptoms
 	 * 
 	 * @return map of iteration of symptoms with their occurences
 	 * 
@@ -35,7 +35,7 @@ public interface ISymptomReader {
 	/**
 	 * write a new file from a map of symptoms
 	 *
-	 * @param file name
+	 * @param map with symptoms and their occurences
 	 * 
 	 * @return file with number of iteration of each symptoms from the file in param
 	 *        
