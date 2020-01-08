@@ -10,10 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-
 public class ReadSymptomDataFromFile implements ISymptomReader {
-
-
 
 	@Override
 	public List<String> getSymptoms(String fileName) {
@@ -36,37 +33,47 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
 		return result;
 	}
+	
 
 	@Override
 	public void writeSymptomsAndOccurences(Map<String, Integer> mapSymptomsOccurences) throws IOException {
-		
+
 		String currentUsersHomeDir = System.getProperty("user.home");
 		String path = currentUsersHomeDir + System.getProperty("file.separator") + "result.out";
 		FileWriter writer = new FileWriter(path);
-		mapSymptomsOccurences.forEach((k, v) -> {
-			try {
-				writer.write(k + "=" + v);
-				writer.write(System.getProperty("line.separator"));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
+		if (mapSymptomsOccurences != null && !mapSymptomsOccurences.isEmpty()) {
+			mapSymptomsOccurences.forEach((k, v) -> {
+				try {
+					writer.write(k + "=" + v);
+					writer.write(System.getProperty("line.separator"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			});
 
-		writer.close();
+			writer.close();
+
+		} else {
+			writer.write("aucun symptome n'a été trouvé");
+			writer.close();
+		}
 		System.out.println("le fichier de sortie se trouve: " + path);
-		
 	}
 
+	
 	@Override
 	public Map<String, Integer> getSymptomsWithOccurences(List<String> symptoms) {
-	
-		Collections.sort(symptoms);
+
 		Map<String, Integer> map = new TreeMap<>();
 
-		for (String symptom : symptoms) {
-			map.put(symptom, map.containsKey(symptom) ? map.get(symptom) + 1 : 1);
-		}
+		if (symptoms != null && !symptoms.isEmpty()) {
+			Collections.sort(symptoms);
 
+			for (String symptom : symptoms) {
+				map.put(symptom, map.containsKey(symptom) ? map.get(symptom) + 1 : 1);
+			}
+
+		}
 		return map;
 
 	}
