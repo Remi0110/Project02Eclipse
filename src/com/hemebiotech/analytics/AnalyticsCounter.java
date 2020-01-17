@@ -46,6 +46,8 @@ public class AnalyticsCounter {
 	 */
 	public void saving(Map<String, Integer> mapSymptomsOccurences) throws Exception {
 		readSymptomDataFromFile.writeSymptomsAndOccurences(mapSymptomsOccurences);
+
 	}
 
 }
+
