@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AnalyticsCounter {
 
-	
+
 	ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
 	
 	/**
@@ -47,7 +47,3 @@ public class AnalyticsCounter {
 	public void saving(Map<String, Integer> mapSymptomsOccurences) throws Exception {
 		readSymptomDataFromFile.writeSymptomsAndOccurences(mapSymptomsOccurences);
 	}
-	
-	
-
-}
