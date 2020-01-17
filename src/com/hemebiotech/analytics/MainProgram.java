@@ -14,6 +14,7 @@ public class MainProgram {
 		List<String> symptoms = analyticsCounter.reading(file);
 		Map<String, Integer> mapSymptomsOccurences = analyticsCounter.count(symptoms);
 		analyticsCounter.saving(mapSymptomsOccurences);
+
 	}
 
 }
