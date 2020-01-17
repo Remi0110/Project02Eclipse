@@ -5,14 +5,45 @@ import java.util.Map;
 
 public class AnalyticsCounter {
 
-	public static void main(String args[]) throws Exception {
 
-		final String file = new String("symptoms.txt");
-
-		ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
-		List<String> symptoms = readSymptomDataFromFile.getSymptoms(file);
-		Map<String, Integer> mapSymptomsOccurences = readSymptomDataFromFile.getSymptomsWithOccurences(symptoms);
+	ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
+	
+	/**
+	 * read symptoms in a file and create a list of symptoms 
+	 *
+	 * @param file
+	 * 
+	 * @return list of symptoms
+	 * 
+	 * @author Rémi ESPIN
+	 */
+	public List<String> reading(String file) {
+		return readSymptomDataFromFile.getSymptoms(file);
+	}
+	
+	/**
+	 * count occurences of symptoms in a list and create a map of symptoms 
+	 *
+	 * @param list of symptoms
+	 * 
+	 * @return map of iteration of symptoms with their occurences
+	 * 
+	 * @author Rémi ESPIN
+	 */
+	public Map<String, Integer> count(List<String> symptoms){
+		return readSymptomDataFromFile.getSymptomsWithOccurences(symptoms);
+		
+	}
+	
+	/**
+	 * save a new file from a map of symptoms
+	 *
+	 * @param map with symptoms and their occurences
+	 * 
+	 * @return file with number of iteration of each symptoms from the map in param
+	 *        
+	 * @author Rémi ESPIN
+	 */
+	public void saving(Map<String, Integer> mapSymptomsOccurences) throws Exception {
 		readSymptomDataFromFile.writeSymptomsAndOccurences(mapSymptomsOccurences);
 	}
-
-}
