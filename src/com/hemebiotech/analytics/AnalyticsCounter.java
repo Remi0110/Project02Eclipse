@@ -32,7 +32,6 @@ public class AnalyticsCounter {
 	 */
 	public Map<String, Integer> count(List<String> symptoms){
 		return readSymptomDataFromFile.getSymptomsWithOccurences(symptoms);
-		
 	}
 	
 	/**
@@ -46,7 +45,6 @@ public class AnalyticsCounter {
 	 */
 	public void saving(Map<String, Integer> mapSymptomsOccurences) throws Exception {
 		readSymptomDataFromFile.writeSymptomsAndOccurences(mapSymptomsOccurences);
-
 	}
 
 }
